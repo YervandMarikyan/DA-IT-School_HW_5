@@ -1,0 +1,17 @@
+@import "reset";
+
+$body_bg_col: #0f0;
+$body_pading: 35px;
+
+body {
+    padding: $body_pading;
+    background-color: $body_bg_col;
+}
+
+.now-date {
+    margin-bottom: 30px;
+}
+
+.alert-confirm-prompt {
+    margin-bottom: 30px;
+}

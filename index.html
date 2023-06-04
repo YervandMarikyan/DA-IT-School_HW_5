@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/scss.css">
+    <title>Calculator HW_5</title>
+</head>
+<body>
+    <main>
+        <div class="now-date">
+            <h2>Current date</h2>
+            <span class="day"></span>
+            <span class="month"></span>
+            <span class="year"></span>
+            <span class="hour"></span>
+            <span class="minute"></span>
+            <p></p>
+        </div>
+        <div class="alert-confirm-prompt">
+            <button class="alert">Show alert</button>
+            <button class="confirm">Show confirm</button>
+            <button class="prompt">Show prompt</button>            
+        </div>
+        <div class="calculator">
+            <form class="calc">
+                <label for="firstNum">1st Number:</label>
+                <input type="number" id="firstNum" name="firstNum"><br>
+                <label for="secondNum">2nd Number:</label>
+                <input type="number" id="secondNum" name="secondNum"><br>
+                <button class="multiply">Multiply</button>              
+                <button class="divide">Divide</button>              
+            </form>
+            <div class="result">
+                <span>The result is: </span> <span class="res"></span>
+            </div>
+        </div>
+    </main>
+    <script src="js/index.js"></script>
+</body>
+</html>
