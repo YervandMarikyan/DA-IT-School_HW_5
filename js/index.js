@@ -9,41 +9,32 @@
 
 */
 
-const nowDate = document.querySelector(".now-date p");
-const showAlert = document.querySelector(".alert");
-const showConfirm = document.querySelector(".confirm");
-const showPrompt = document.querySelector(".prompt");
-
-
 const number1 = document.querySelector("#firstNum");
 const number2 = document.querySelector("#secondNum");
-const multiply = document.querySelector(".multiply");
-const divide = document.querySelector(".divide");
-const calc = document.querySelector(".calc");
-const result = document.querySelector(".res");
+const result = document.querySelector(".calc-result-block__res");
+
+const zeroSetter = (number) => parseInt(number) < 10 ? "0" + number : number;
 
 //1. DD-MM-YYYY HH:MM
 const currentDate = new Date();
-document.querySelector(".day").textContent = `${currentDate.getDate()} - `;
-document.querySelector(".month").textContent = `${currentDate.getMonth()+1} - `;
-document.querySelector(".year").textContent = `${currentDate.getFullYear()} `;
-document.querySelector(".hour").textContent = `${currentDate.getHours()}:`;
-document.querySelector(".minute").textContent = `${currentDate.getMinutes()}`;
-//nowDate.textContent = currentDate;
+document.querySelector(".result p").textContent = `${zeroSetter(currentDate.getDate())} - 
+	${zeroSetter(currentDate.getMonth()+1)} - 
+	${currentDate.getFullYear()} 
+	${zeroSetter(currentDate.getHours())}:${zeroSetter(currentDate.getMinutes())}`;
 
 //2.
-showAlert.addEventListener("click", () => {
+document.querySelector(".alert").addEventListener("click", () => {
 	alert("This is alert function");
 });
 
-showConfirm.addEventListener("click", () => {
+document.querySelector(".confirm").addEventListener("click", () => {
 	confirm("This is confirm function");
 });
 
-showPrompt.addEventListener("click", () => {
+document.querySelector(".prompt").addEventListener("click", () => {
 	let person = prompt("Please enter your name", "Firstname Lastname");
 
-	if (person != null) {
+	if (person) {
 	  alert("Hello " + person);
 	}
 });
@@ -67,10 +58,10 @@ function BubblesortArr(arr) {
 	for(let i = 0; i < arr.length; i++) {
 		for(let j = 0; j < arr.length - i - 1; j++) {
 			if (arr[j] > arr[j + 1]) {
-                let temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            }
+        const temp = arr[j];
+        arr[j] = arr[j + 1];
+        arr[j + 1] = temp;
+      }
 		}
 	}
 	console.log(arr);
@@ -78,24 +69,30 @@ function BubblesortArr(arr) {
 
 //BubblesortArr(someArr);
 
-
 function compareNumbers(a, b) {
   return a - b;
 }
 
 //console.log(someArr.sort(compareNumbers));
 
-
 //5.
-calc.addEventListener("click", (event) => {
+document.querySelector(".calc").addEventListener("click", (event) => {
 	event.preventDefault()
 });
 
-multiply.addEventListener("click", () => {
-	result.textContent = number1.value * number2.value;
+const calculate = (param) => {	
+	switch(param) {
+		case "*": return result.textContent = number1.value * number2.value;
+		case "/": return result.textContent = number1.value / number2.value;
+		default: alert("Something went wrong");
+	}
+};
+
+document.querySelector(".multiply").addEventListener("click", () => {
+	calculate("*");
 });
 
-divide.addEventListener("click", () => {
-	result.textContent = number1.value / number2.value;
+document.querySelector(".divide").addEventListener("click", () => {
+	calculate("/");
 });
 
